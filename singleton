@@ -1,0 +1,22 @@
+/**
+ *  单例
+ */
+public class demo {
+
+    private static   boolean flag = false;
+    private demo() {
+        if (flag == false) {
+            flag = !flag;
+        }else {
+            throw new RuntimeException("单例不能被攻破");
+        }
+    }
+
+    private static class SingletonHolder {
+        private static final demo INSTANCE = new demo();
+    }
+
+    public static demo getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
+}
