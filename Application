@@ -1,0 +1,17 @@
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+/**
+ *  测试利用反射攻击单例
+ */
+public class singletonTest {
+
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class<?> classType = demo.class;
+        Constructor<?> c = classType.getDeclaredConstructor(); // 抛noSuchMethod 异常
+        c.setAccessible(true);
+        demo d = (demo) c.newInstance();
+        demo d1 = demo.getInstance();
+        System.out.println(d==d1);
+    }
+}
